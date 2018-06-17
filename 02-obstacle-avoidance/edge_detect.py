@@ -26,8 +26,10 @@ image = imutils.resize(image, height = 500)
 # in the image
 gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 
+denoised = cv2.fastNlMeansDenoisingColored(image,None,10,10,7,21)
+
 image = cv2.GaussianBlur(image, (5, 5), 0)
-edged = cv2.Canny(image, 10, 70)
+edged = cv2.Canny(denoised, 10, 70)
 
 #gray = np.float32(gray)
 #harris = cv2.cornerHarris(gray,2,3,0.04)
